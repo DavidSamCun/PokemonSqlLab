@@ -111,9 +111,19 @@ What is Rufflet's secondary type?
     ON p.secondary_type = t.id
     Where p.name = 'Rufflet';
 
+What are the names of the pokemon that belong to the trainer with trainerID 303?
 
+        Find trainer 303 first
+    select * from trainers where trainerID = 303;
+        or
+    select * from pokemon_trainer where trainerID = 303;
 
+        Complete Answer
+    select pt.trainerID, p.name
+    From pokemon.pokemon_trainer pt
+    Join pokemon.pokemons p
+    ON pt.pokemon_id = p.id
+    Where pt.trainerID = 303;
 
-
-
+How many pokemon have a secondary type
 
