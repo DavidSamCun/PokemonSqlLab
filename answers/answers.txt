@@ -121,3 +121,36 @@ What are all the primary types and how many pokemon have that type?
     on p.primary_type = t.id
     GROUP BY p.primary_type;
 
+How many pokemon at level 100 does each trainer with at least one level 100 pokemone have?
+
+                    COUNT ALL 100 FOR EACH TRAINER THAT HAS 100
+
+    Select pt.trainerID, COUNT(*) cnt
+    From pokemon.pokemon_trainer pt
+    Join pokemon.pokemons p
+    on pt.pokemon_id = p.id
+    Group by pt.trainerID;
+
+                    OR FOR TOTAL OF OVER 100
+
+    Select COUNT(*) cnt
+    From pokemon.pokemon_trainer pt
+    Where pt.pokelevel = 100;
+
+
+How many pokemon only belong to one trainer and no other?
+
+    Select pt.pokemon_id, COUNT(*) cnt, p.name
+    From pokemon.pokemon_trainer pt
+    Join pokemon.pokemons p
+    on pt.pokemon_id = p.id
+    Group by pt.pokemon_id
+    Having cnt = 1;
+
+Part 4 Note
+
+select s.name "Student", c.name "Course"
+from student s, bridge b, course c
+where b.sid = s.sid and b.cid = c.cid
+
+Group by trainerID??
