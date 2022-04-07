@@ -1,0 +1,64 @@
+Part 1 - Import files
+On terminal, navigate to the directory where the ".sql" files are.
+perform the following.
+
+logon to mysql, create db/schema
+exit
+mysql -u username -p  dbName < file.sql
+
+Do for all 4 files and verify
+
+Part 2 - Simple Select and Counts
+What are all the types of pokemon that a pokemon can have?
+2 types. Primary type and secondary type
+
+
+What is the name of the pokemon with id 45?
+
+select * from pokemons where id = 45;
++----+-------+--------------+----------------+
+| id | name  | primary_type | secondary_type |
++----+-------+--------------+----------------+
+| 45 | Eevee |            1 |           NULL |
++----+-------+--------------+----------------+
+
+How many pokemon are there?
+656 pokemon
+
+How many types are there?
++----+----------+
+| id | name     |
++----+----------+
+|  1 | Normal   |
+|  2 | Water    |
+|  3 | Grass    |
+|  4 | Rock     |
+|  5 | Fire     |
+|  6 | Ground   |
+|  7 | Poison   |
+|  8 | Bug      |
+|  9 | Electric |
+| 10 | Dragon   |
+| 11 | Steel    |
+| 12 | Dark     |
+| 13 | Fighting |
+| 14 | Psychic  |
+| 15 | Ghost    |
+| 16 | Fairy    |
+| 17 | Ice      |
+| 18 | Flying   |
++----+----------+
+
+How many pokemon have a secondary type?
+
+316 pokemon that have secondary
+Select secondary_type, Count(*) AS cnt
+From pokemons
+Group by secondary_type;
+
+OR
+
+Select
+SUM(CASE WHEN secondary_type IS NOT NULL THEN 1 ELSE 0 END) AS not_null_num
+From pokemons
+
