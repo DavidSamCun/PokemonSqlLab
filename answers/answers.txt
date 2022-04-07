@@ -149,8 +149,16 @@ How many pokemon only belong to one trainer and no other?
 
 Part 4 Note
 
-select s.name "Student", c.name "Course"
-from student s, bridge b, course c
-where b.sid = s.sid and b.cid = c.cid
+select p.name, t.trainername, pt.pokelevel, ts.name as primary_type, ts2.name as secondary_type
+From pokemon.pokemon_trainer pt
+inner join pokemon.trainers t
+on pt.trainerID = t.trainerID
+Inner Join pokemon.pokemons p
+on pt.pokemon_id = p.id
+Inner join pokemon.types ts
+on ts.id = p.primary_type
+inner join pokemon.types ts2
+on ts2.id = p.secondary_type
+order by pt.pokelevel desc
+limit 100;
 
-Group by trainerID??
