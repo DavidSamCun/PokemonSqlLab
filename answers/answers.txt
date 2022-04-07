@@ -105,19 +105,18 @@ What are the names of the pokemon that belong to the trainer with trainerID 303?
 
 How many pokemon have a secondary type Poison?
 
-
-//SCRAP
-    Select
- Select p.name, p.secondary_type, t.name
+    Select p.secondary_type, COUNT(*) cnt, t.name
     From pokemon.pokemons p
     Join pokemon.types t
     on p.secondary_type = t.id
-    WHERE t.id = Poison;
+    GROUP BY p.secondary_type;
 
-        Select secondary_type, Count(*) AS cnt
-        From pokemons
-        Group by secondary_type
-        WHERE
+What are all the primary types and how many pokemon have that type?
 
+    Select p.primary_type, COUNT(*) cnt, t.name
+    From pokemon.pokemons p
+    Join pokemon.types t
+    on p.primary_type = t.id
+    GROUP BY p.primary_type;
 
 
