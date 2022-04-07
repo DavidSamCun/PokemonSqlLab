@@ -65,32 +65,10 @@ How many pokemon have a secondary type?
 Part 3: Joins and Groups
 What is each pokemon's primary type?
 
-    Select primary_type, Count(*) AS cnt
-    From pokemons
-    Group by primary_type;
-
-+--------------+-----+
-| primary_type | cnt |
-+--------------+-----+
-|            1 |  90 |
-|            2 |  95 |
-|            3 |  59 |
-|            4 |  38 |
-|            5 |  38 |
-|            6 |  29 |
-|            7 |  27 |
-|            8 |  61 |
-|            9 |  35 |
-|           10 |  22 |
-|           11 |  19 |
-|           12 |  24 |
-|           13 |  25 |
-|           14 |  38 |
-|           15 |  19 |
-|           16 |  14 |
-|           17 |  22 |
-|           18 |   1 |
-+--------------+-----+
+    Select p.name, p.primary_type, t.name
+    From pokemon.pokemons p
+    Join pokemon.types t
+    on p.primary_type = t.id;
 
 What is Rufflet's secondary type?
 
@@ -125,5 +103,21 @@ What are the names of the pokemon that belong to the trainer with trainerID 303?
     ON pt.pokemon_id = p.id
     Where pt.trainerID = 303;
 
-How many pokemon have a secondary type
+How many pokemon have a secondary type Poison?
+
+
+//SCRAP
+    Select
+ Select p.name, p.secondary_type, t.name
+    From pokemon.pokemons p
+    Join pokemon.types t
+    on p.secondary_type = t.id
+    WHERE t.id = Poison;
+
+        Select secondary_type, Count(*) AS cnt
+        From pokemons
+        Group by secondary_type
+        WHERE
+
+
 
