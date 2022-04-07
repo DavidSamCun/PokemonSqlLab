@@ -65,5 +65,55 @@ How many pokemon have a secondary type?
 Part 3: Joins and Groups
 What is each pokemon's primary type?
 
+    Select primary_type, Count(*) AS cnt
+    From pokemons
+    Group by primary_type;
+
++--------------+-----+
+| primary_type | cnt |
++--------------+-----+
+|            1 |  90 |
+|            2 |  95 |
+|            3 |  59 |
+|            4 |  38 |
+|            5 |  38 |
+|            6 |  29 |
+|            7 |  27 |
+|            8 |  61 |
+|            9 |  35 |
+|           10 |  22 |
+|           11 |  19 |
+|           12 |  24 |
+|           13 |  25 |
+|           14 |  38 |
+|           15 |  19 |
+|           16 |  14 |
+|           17 |  22 |
+|           18 |   1 |
++--------------+-----+
+
+What is Rufflet's secondary type?
+
+        Isolate rufflet
+    Select name, secondary_type from pokemons where name = 'Rufflet';
+
+        now figure out what 18 means by joining
+        Step 1 merge
+    Select p.name, p.secondary_type, t.name
+    FROM pokemon.pokemons p
+    Join pokemon.types t
+    ON p.secondary_type = t.id;
+
+        step 2 throw in the where
+    Select p.name, p.secondary_type, t.name
+    FROM pokemon.pokemons p
+    Join pokemon.types t
+    ON p.secondary_type = t.id
+    Where p.name = 'Rufflet';
+
+
+
+
+
 
 
